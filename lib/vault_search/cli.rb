@@ -30,15 +30,20 @@ end
   
   def menu
     #fancy up
-    puts "Please select the number of the vault you'd like to learn more information about:"
+    puts "Please select the number of the vault you'd like to learn more information about or type exit to leave the program:"
     input = gets.strip 
     if input.to_i > 0 
       vault = VaultSearch::Vault.find_by_index(input.to_i - 1)
     puts "#{vault.name} - #{vault.location} - #{vault.appearances} - #{vault.status}"
-    
+    elsif
+    input == "exit"
+    goodbye
+    exit
+  end
 end
 
 def goodbye 
+  puts "Have a great nuclear winter! Goodbye!"
 end
 
 end
