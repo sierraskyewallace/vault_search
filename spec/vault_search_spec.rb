@@ -1,4 +1,6 @@
-RSpec.describe VaultSearch do
+require 'spec_helper'
+
+describe VaultSearch do
   it "has a version number" do
     expect(VaultSearch::VERSION).not_to be nil
   end
