@@ -1,3 +1,9 @@
 #!/usr/bin/env ruby
 
+
+require 'bundler/setup'
+require 'vault_search'
+
+VaultSearch::CLI.new.call
+
 puts "hello"
