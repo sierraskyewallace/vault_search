@@ -15,10 +15,10 @@ end
   def list_vaults
     input = gets.strip
     if input == "list" 
-      @concerts = VaultSearch::Scraper
+      @vaults = VaultSearch::Scraper
       @vaults.each_with_index(1) do |vault, i|
         puts "#{i}. #{vault.name}"
-   elsif input == "exit" 
+    if input == "exit" 
         goodbye
         exit
       else
@@ -45,4 +45,6 @@ end
 def goodbye 
   #fancy up 
   puts "Have a great nuclear winter! Goodbye!"
+end
+end
 end
