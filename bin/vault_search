@@ -2,7 +2,7 @@
 
 
 require 'bundler/setup'
-require 'vault_search'
+require './lib/vault_search'
 
 VaultSearch::CLI.new.call
 
