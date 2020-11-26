@@ -19,7 +19,7 @@ end
       @vaults = VaultSearch::Scraper
       @vaults.each_with_index(1) do |vault, i|
         puts "#{i}. #{vault.name}"
-    elsif
+    if
         "Please type list to see a list of vaults or type exit to leave."
         list_vaults
       end
@@ -42,4 +42,6 @@ end
 def goodbye 
   #fancy up 
   puts "Have a great nuclear winter! Goodbye!"
+end
+end
 end
