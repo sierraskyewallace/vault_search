@@ -4,13 +4,14 @@ class VaultSearch::CLI
     list_vaults
     menu
     goodbye
+  end
 end
   def welcome 
     #fancy up 
     puts "Welcome to Vault Search!"
     puts "To see a list of vaults, type list."
     puts "To exit the program, type exit."
-end
+  end
 
   def list_vaults
     input = gets.strip
@@ -18,15 +19,11 @@ end
       @vaults = VaultSearch::Scraper
       @vaults.each_with_index(1) do |vault, i|
         puts "#{i}. #{vault.name}"
-    if input == "exit" 
-        goodbye
-        exit
-      else
+    elsif
         "Please type list to see a list of vaults or type exit to leave."
         list_vaults
       end
     end
-  end
   
   def menu
     #fancy up
@@ -35,7 +32,7 @@ end
     if input.to_i > 0 
       vault = VaultSearch::Scraper.find_by_index(input.to_i - 1)
     puts "#{vault.name} - #{vault.location} - #{vault.appearances} - #{vault.status}"
-    elsif
+    else
     input == "exit"
     goodbye
     exit
@@ -45,6 +42,4 @@ end
 def goodbye 
   #fancy up 
   puts "Have a great nuclear winter! Goodbye!"
-end
-end
 end
