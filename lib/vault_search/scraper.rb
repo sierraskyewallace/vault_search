@@ -1,4 +1,6 @@
 class VaultSearch::Scraper 
+  attr_accessor :name, :location, :status, :appearances
+  
   def self.scrape 
     self.scrape_vaults
   end
@@ -12,10 +14,10 @@ class VaultSearch::Scraper
   def self.scrape_fandom
     doc = Nokogiri::HTML(open("https://fallout.fandom.com/wiki/List_of_Vaults"))
     vault = self.new 
-    vault.name = 
-    vault.location = 
-    vault.status = 
-    vault.appearances = 
+    vault.name = doc.search
+    vault.location = doc.search
+    vault.status = doc.search 
+    vault.appearances = doc.search 
   end
 end
 
