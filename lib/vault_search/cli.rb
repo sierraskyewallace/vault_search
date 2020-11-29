@@ -19,7 +19,7 @@ end
     input = gets.strip
     if input == "list"
       @vaults = VaultSearch::Scraper.scrape
-      @vaults.each_with_index(1) {|vault, i| puts "#{i}. #{vault.name}"}
+      @vaults.each.with_index(1) {|vault, i| puts "#{i}. #{vault.name}"}
       elsif input == "exit"
       goodbye 
       exit
