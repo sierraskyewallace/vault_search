@@ -13,7 +13,10 @@ class VaultSearch::Scraper
   
   def self.scrape_fandom
     doc = Nokogiri::HTML(open("https://fallout.gamepedia.com/List_of_known_Vaults"))
+    binding.pry
+   
     vault = self.new 
+    
     vault.name = doc.search
     vault.location = doc.search
     vault.status = doc.search 
