@@ -1,3 +1,5 @@
+
+
 class VaultSearch::Scraper 
   attr_accessor :name, :location, :status, :appearances
   
