@@ -1,3 +1,9 @@
+PATH
+  remote: .
+  specs:
+    vault_search (0.1.0)
+      nokogiri (~> 1.10, >= 1.10.10)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -11,7 +17,7 @@ GEM
     pry (0.13.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
-    rake (12.3.3)
+    rake (10.5.0)
     rspec (3.10.0)
       rspec-core (~> 3.10.0)
       rspec-expectations (~> 3.10.0)
@@ -31,11 +37,11 @@ PLATFORMS
 
 DEPENDENCIES
   bundler (~> 2.1, >= 2.1.4)
-  nokogiri (~> 1.10, >= 1.10.10)
   open-uri (~> 0.1.0)
   pry (~> 0.13.1)
-  rake (~> 12.0)
-  rspec (~> 3.0)
+  rake (~> 10.0)
+  rspec
+  vault_search!
 
 BUNDLED WITH
    2.1.4
