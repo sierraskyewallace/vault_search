@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     vault_search (0.1.0)
-      nokogiri (~> 1.10, >= 1.10.10)
+      nokogiri
 
 GEM
   remote: https://rubygems.org/
@@ -37,8 +37,8 @@ PLATFORMS
 
 DEPENDENCIES
   bundler (~> 2.1, >= 2.1.4)
-  open-uri (~> 0.1.0)
-  pry (~> 0.13.1)
+  open-uri
+  pry
   rake (~> 10.0)
   rspec
   vault_search!
