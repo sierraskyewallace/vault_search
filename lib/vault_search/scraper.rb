@@ -25,4 +25,3 @@ class VaultSearch::Scraper
     vault.appearances = doc.search 
   end
 end
-
