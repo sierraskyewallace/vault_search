@@ -19,8 +19,8 @@ class VaultSearch::Scraper
    
     vault = self.new 
     
-    vault.name = doc.search
-    vault.location = doc.search
+    vault.name = doc.search("")
+    vault.location = doc.search("")
     vault.status = doc.search 
     vault.appearances = doc.search 
   end
