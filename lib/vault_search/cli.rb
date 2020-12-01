@@ -1,6 +1,7 @@
 
 
 class VaultSearch::CLI 
+
   
   def call 
     welcome
@@ -19,7 +20,7 @@ end
   def list_vaults
     input = gets.strip
     if input == "list"
-      @vaults = VaultSearch::Scraper.scrape
+      @vaults = VaultSearch::Scraper.scrape_vaults
       @vaults.each.with_index(1) {|vault, i| puts "#{i}. #{vault.name}"}
       elsif input == "exit"
       goodbye 
