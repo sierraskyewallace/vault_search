@@ -1,6 +1,7 @@
 
 
 class VaultSearch::CLI 
+  
   def call 
     welcome
     list_vaults
