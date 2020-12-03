@@ -1,5 +1,3 @@
-
-
 class VaultSearch::CLI 
 
   
@@ -20,7 +18,7 @@ end
   def list_vaults
     input = gets.strip
     if input == "list"
-      @vaults = VaultSearch::Scraper.scrape_vaults
+      @vaults = VaultSearch::Scraper.scrape_site
       @vaults.each.with_index(1) {|vault, i| puts "#{i}. #{vault.name}"}
       elsif input == "exit"
       goodbye 
@@ -50,4 +48,5 @@ def goodbye
   #fancy up 
   puts "Have a great nuclear winter! Goodbye!"
 end
+
 
