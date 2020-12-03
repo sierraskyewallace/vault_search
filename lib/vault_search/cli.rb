@@ -2,6 +2,7 @@ class VaultSearch::CLI
 
   
   def call 
+    VaultSearch::Scraper.scrape_site
     welcome
     list_vaults
     menu
@@ -18,14 +19,15 @@ end
   def list_vaults
     input = gets.strip
     if input == "list"
-      @vaults = VaultSearch::Scraper.scrape_site
-      @vaults.each.with_index(1) {|vault, i| puts "#{i}. #{vault.name}"}
+      vaults = VaultSearch::Scraper.scrape_site
+      vaults.each.with_index(1) {|vault, i| puts "#{i}. #{vault.name}."}
       elsif input == "exit"
       goodbye 
       exit
     else
       puts "To see the list of vault again, type list. To exit the program, type exit."
       list_vaults
+  
     end
   end
       
@@ -35,7 +37,7 @@ end
     puts "Please select the number of the vault you'd like to learn more information about or type exit to leave the program:"
     input = gets.strip 
     if input.to_i > 0 
-      vault = VaultSearch::Scraper.find_by_index(input.to_i - 1)
+      vault = VaultSearch::Vault.find_by_index(input.to_i - 1)
     puts "#{vault.name} - #{vault.location} - #{vault.appearances} - #{vault.status}"
     else
     input == "exit"

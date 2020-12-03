@@ -5,7 +5,7 @@ class VaultSearch::Scraper
   def self.scrape_site
     doc = Nokogiri::HTML(URI.open("https://fallout.gamepedia.com/List_of_known_Vaults"))
     vault = self.new 
-
+    doc.css("").each do |vault|
     vault.designation = doc.css("td")[0].text.strip
     vault.location = doc.css("td")[3].text.strip
     vault.status = doc.css("td")[2].text.strip
