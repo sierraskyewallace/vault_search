@@ -37,7 +37,7 @@ end
     puts "Please select the number of the vault you'd like to learn more information about or type exit to leave the program:"
     input = gets.strip 
     if input.to_i > 0 
-      vault = VaultSearch::Vault.find_by_index(input.to_i - 1)
+      vault = VaultSearch::Scraper.find_by_index(input.to_i - 1)
     puts "#{vault.name} - #{vault.location} - #{vault.appearances} - #{vault.status}"
     else
     input == "exit"
