@@ -1,5 +1,5 @@
 class VaultSearch::CLI 
-
+attr_accessor :name, :location, :status, :appearances
   
   def call 
    
@@ -19,8 +19,8 @@ end
   def list_vaults
     input = gets.strip
     if input == "list"
-      vaults = VaultSearch::Scraper.scrape_site
-      vaults.each.with_index(1) {|vault, i| puts "#{i}. #{vault.name}."}
+      vault = VaultSearch::Scraper.scrape_site
+      vault.each.with_index(1) {|vault, i| puts "#{i}. #{vault.name}."}
       elsif input == "exit"
       goodbye 
       exit
@@ -36,9 +36,10 @@ end
     #fancy up
     puts "Please select the number of the vault you'd like to learn more information about or type exit to leave the program:"
     input = gets.strip 
-    if input.to_i > 0 
-      vault = VaultSearch::Scraper.find_by_index(input.to_i - 1)
+    if input.to_i > 0
+    vault = VaultSearch::Scraper.find_by_index(input.to_i - 1)
     puts "#{vault.name} - #{vault.location} - #{vault.appearances} - #{vault.status}"
+    puts "Please select another vault or type EXIT to leave the program:"
     else
     input == "exit"
     goodbye

@@ -17,11 +17,11 @@ class VaultSearch::Scraper
     vault = self.new
     rows = doc.search("tbody tr")
     rows.each do |row|
-    name = row.search('td').map(&:text)
-    location = row.search('td').map(&:text)
-    status = row.search('td').map(&:text)
-    appearances = row.search('td').map(&:text)
+    vault.name = row.search('td').map(&:text)
+    vault.location = row.search('td').map(&:text)
+    vault.status = row.search('td').map(&:text)
+    vault.appearances = row.search('td').map(&:text)
     vault
-  end
+end
 end
 end
