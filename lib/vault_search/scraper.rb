@@ -12,17 +12,19 @@ class VaultSearch::Scraper
   end
 
 
-  def self.scrape_site
-    doc = Nokogiri::HTML(URI.open("https://fallout-archive.fandom.com/wiki/List_of_known_Vaults")) 
-    vault = self.new
-    rows = doc.search("tbody tr")
-    rows.each do |row|
-    name = row.search('td').map(&:text)
-    location = row.search('td').map(&:text)
-    description = row.search('td').map(&:text)
-    status = row.search('td').map(&:text)
-    appearances = row.search('td').map(&:text)
-    puts name, location, status, appearances
-end
+  def self.scrape_vaults
+    vaults = []
+     doc = Nokogiri::HTML(URI.open("https://fallout-archive.fandom.com/wiki/List_of_known_Vaults"))
+     rows = doc.search("tbody tr")
+     rows.each do |row|
+      vault = self.new
+      vault.name = row.search('td').map(&:text)
+      vault.location = row.search('td').map(&:text)
+      vault.description = row.search('td').map(&:text)
+      vault.status = row.search('td').map(&:text)
+      vault.appearances = row.search('td').map(&:text)
+      vaults << vault
+    end
+    vaults
 end
 end
