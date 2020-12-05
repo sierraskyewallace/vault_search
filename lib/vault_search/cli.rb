@@ -2,7 +2,7 @@ class VaultSearch::CLI
 
   
   def call 
-    VaultSearch::Scraper.scrape_site
+   
     welcome
     list_vaults
     menu
