@@ -1,6 +1,6 @@
 
 class VaultSearch::Scraper 
-  attr_accessor :name, :status, :appearances, :location
+  attr_accessor :name, :status, :description, :appearances, :location
   
   def self.scrape 
     self.scrape_vaults
@@ -13,15 +13,16 @@ class VaultSearch::Scraper
 
 
   def self.scrape_site
-    doc = Nokogiri::HTML(URI.open("https://fallout-archive.fandom.com/wiki/List_of_known_Vaults"))
+    doc = Nokogiri::HTML(URI.open("https://fallout-archive.fandom.com/wiki/List_of_known_Vaults")) 
     vault = self.new
     rows = doc.search("tbody tr")
     rows.each do |row|
-    vault.name = row.css('td').map(&:text)
-    vault.location = row.css('td').map(&:text)
-    vault.status = row.css('td').map(&:text)
-    vault.appearances = row.css('td').map(&:text)
-    vault
+    name = row.search('td').map(&:text)
+    location = row.search('td').map(&:text)
+    description = row.search('td').map(&:text)
+    status = row.search('td').map(&:text)
+    appearances = row.search('td').map(&:text)
+    puts name, location, status, appearances
 end
 end
 end
