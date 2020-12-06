@@ -1,54 +1,36 @@
-class VaultSearch::CLI 
-attr_accessor :name, :location, :description, :status, :appearances
-  
-  def call 
-    welcome
+class VaultSearch::CLI
+
+  def call
     list_vaults
     menu
     goodbye
   end
-end
-  def welcome 
-    #fancy up 
-    puts "Welcome to Vault Search!"
-    puts "To see a list of vaults, type list."
-    puts "To exit the program, type exit."
-  end
-
   def list_vaults
-    input = gets.strip
-    if input == "list"
-      vault = VaultSearch::Scraper.scrape
-      vault.each.with_index(1) {|vault, i| puts "#{i}. #{vault.name}."}
-      elsif input == "exit"
-      goodbye 
-      exit
-    else
-      puts "To see the list of vault again, type list. To exit the program, type exit."
-      list_vaults
-  
+    puts "Welcome to Vault Search! Please type the number of the vault you'd like more information about or type exit to leave:"
+    @vaults = VaultSearch::Scraper.scrape_vaults
+    @vaults.each.with_index(1) do |vault, i|
+      puts "#{i}. #{vault.name}."
     end
   end
-      
-  
+
   def menu
-    #fancy up
-    puts "Please select the number of the vault you'd like to learn more information about or type exit to leave the program:"
-    input = gets.strip 
-    if input.to_i > 0
-    vault = VaultSearch::Scraper.find_by_index(input.to_i - 1)
-    puts "#{vault.name} - #{vault.location} - #{description} - #{vault.appearances} - #{vault.status}"
-    puts "Please select another vault or type EXIT to leave the program:"
-    else
-    input == "exit"
-    goodbye
-    exit
+    input = nil
+    while input != "exit"
+      puts "To see the vault list again, type list. To leave the program, type exit:"
+      input = gets.strip.downcase
+
+      if input.to_i > 0
+        the_vault = @vaults[input.to_i-1]
+        puts "#{the_vault.name} - #{the_vault.description} - #{the_vault.status} - #{the_vault.location} - #{the_vault.appearances}."
+      elsif input == "list"
+        list_vaults
+      else
+        puts "Unsure? Type list to see vault list again or exit to leave."
+      end
+    end
+  end
+
+  def goodbye
+    puts "Have a great nuclear winter!"
   end
 end
-
-def goodbye 
-  #fancy up 
-  puts "Have a great nuclear winter! Goodbye!"
-end
-
-
