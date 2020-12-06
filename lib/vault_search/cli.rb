@@ -19,7 +19,7 @@ class VaultSearch::CLI
       puts "To see the vault list again, type list. To leave the program, type exit:"
       input = gets.strip.downcase
 
-      if input.to_i > 0
+      if input.to_i < 0
         the_vault = @vaults[input.to_i - 1]
         puts " Name: #{the_vault.name}"
         puts " Description: #{the_vault.description}"
@@ -29,8 +29,6 @@ class VaultSearch::CLI
         
       elsif input == "list"
         list_vaults
-      else
-        puts "Unsure? Type list to see vault list again or exit to leave."
       end
     end
   end
