@@ -1,3 +1,4 @@
+require 'colorize'
 class VaultSearch::CLI
 
   def call
@@ -6,7 +7,7 @@ class VaultSearch::CLI
     goodbye
   end
   def list_vaults
-    puts "Welcome to Vault Search! Please type the number of the vault you'd like more information about or type exit to leave:"
+    puts "Welcome to Vault Search! Please type the number of the vault you'd like more information about or type exit to leave:".green
     @vaults = VaultSearch::Scraper.scrape_vaults
     @vaults.each.with_index(1) do |vault, i|
       puts "#{i}. #{vault.name}"
@@ -16,7 +17,8 @@ class VaultSearch::CLI
   def menu
     input = nil
     while input != "exit"
-      puts "To see the vault list again, type list. To leave the program, type exit:"
+    puts "To see the list of vaults again, type list.".blue
+      puts "Please select the vault you'd like to see more information about. To leave the program, type exit:".green
       input = gets.strip.downcase
 
       if input.to_i < 0
@@ -34,6 +36,6 @@ class VaultSearch::CLI
   end
 
   def goodbye
-    puts "Have a great nuclear winter!"
+    puts "Have a great nuclear winter!".green
   end
 end
