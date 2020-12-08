@@ -30,7 +30,7 @@ Gem::Specification.new do |spec|
  spec.add_development_dependency "rspec"
  spec.add_development_dependency "pry"
  spec.add_development_dependency "open-uri"
- spec.add_development_dependency "colorize"
+
 
  spec.add_dependency "nokogiri"
 end
