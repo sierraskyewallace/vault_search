@@ -29,15 +29,15 @@ class VaultSearch::CLI
       input = gets.strip.downcase
       if input.to_i > 0
         the_vault = @vaults[input.to_i - 1]
-        puts "Name:".light_blue
+        puts "------- Name -------".light_blue
         puts "#{the_vault.name}"
-        puts "Description:".light_blue
+        puts "------- Description -------".light_blue
         puts "#{the_vault.description}"
-        puts "Status:".light_blue
+        puts "------- Status -------".light_blue
         puts "#{the_vault.status}"
-        puts "Location:".light_blue
+        puts "------- Location -------".light_blue
         puts "#{the_vault.location}"
-        puts "Appearances:".light_blue
+        puts "------- Appearances -------".light_blue
         puts " #{the_vault.appearances}"
         
       elsif input == "list"
