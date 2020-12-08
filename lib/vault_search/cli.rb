@@ -2,14 +2,19 @@ require 'colorize'
 class VaultSearch::CLI
 
   def call
+    welcome
     list_vaults
     menu
     goodbye
   end
+  def welcome 
+    puts "****************************************************************************".light_blue
+    puts "Welcome to Vault Search!".green
+    puts "Please select which vault form the Fallout franchise you'd like to learn about  or type exit to leave:".green
+    puts "****************************************************************************".light_blue
+  end
+  
   def list_vaults
-    puts "****************************************************************************".blue
-    puts "Welcome to Vault Search! Please type the number of the vault you'd like more information about or type exit to leave:".green
-    puts "****************************************************************************".blue
     @vaults = VaultSearch::Scraper.scrape_vaults
     @vaults.each.with_index(1) do |vault, i|
       puts "#{i}. #{vault.name}"
@@ -19,7 +24,8 @@ class VaultSearch::CLI
   def menu
       input = nil
     while input != "exit"
-      puts "Please select the vault you'd like to see more information about. To leave the program, type exit:".green
+      puts " Please type the number of the vault you'd like more information about,".green 
+      puts "type list to see the list again or type exit to leave:".green
       input = gets.strip.downcase
       if input.to_i > 0
         the_vault = @vaults[input.to_i - 1]
@@ -36,12 +42,14 @@ class VaultSearch::CLI
         
       elsif input == "list"
         list_vaults
+    
       end
     end
+  end
   
 
   def goodbye
     puts "Have a great nuclear winter!".green
   end
 end
-end
+
