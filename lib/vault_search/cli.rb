@@ -2,6 +2,7 @@ require 'colorize'
 class VaultSearch::CLI
 
   def call
+    VaultSearch::Scraper.scrape_vaults
     welcome
     list_vaults
     menu
@@ -15,7 +16,7 @@ class VaultSearch::CLI
   end
   
   def list_vaults
-    @vaults = VaultSearch::Scraper.scrape_vaults
+    @vaults = VaultSearch::Vault.all
     @vaults.each.with_index(1) do |vault, i|
       puts "#{i}. #{vault.name}"
     end
@@ -27,7 +28,7 @@ class VaultSearch::CLI
       puts " Please type the number of the vault you'd like more information about,".green 
       puts "type list to see the list again or type exit to leave:".green
       input = gets.strip.downcase
-      if input.to_i > 0
+      if input.to_i > 0 && input.to_i < @vaults.size
         the_vault = @vaults[input.to_i - 1]
         puts "------- Name -------".light_blue
         puts "#{the_vault.name}"

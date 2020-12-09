@@ -8,14 +8,14 @@ class VaultSearch::Scraper
     rows = doc.at('table')
     rows = doc.search('tbody tr:not(:first-child)')
     rows.each do |row|
-      vault = self.new
+      vault = VaultSearch::Vault.new
       vault.name =  row.search('td').map(&:text)[0]
       vault.location = row.search('td').map(&:text)[3]
       vault.description = row.search('td').map(&:text)[1]
       vault.status = row.search('td').map(&:text)[2]
       vault.appearances = row.search('td').map(&:text)[4]
-      vaults << vault
+      vault.save
     end
-    vaults
+  vaults
 end
 end
